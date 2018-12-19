@@ -1,0 +1,7 @@
+Skeleton
+Russia : 2
+Canada : 20
+France : 14
+Finland : 6
+Japan : 12
+
