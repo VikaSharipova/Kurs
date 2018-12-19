@@ -41,7 +41,6 @@ public:
 private:
 	Node<T> * head = 0;
 	unsigned int length = 0;
-
 };
 
 template <typename T>
@@ -78,7 +77,6 @@ MList<T>& MList<T>::operator=(MList<T> other) {
 		this->push_back(newNode);
 		lookingAtNode = lookingAtNode->next;
 	}
-
 	return *this;
 }
 

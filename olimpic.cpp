@@ -21,10 +21,6 @@ void OlimpicGame::start() {
 	this->initial_stage();
 }
 
-void OlimpicGame::set_stage(unsigned int stage) {
-
-}
-
 void OlimpicGame::initial_stage() {
 
 	this->state = 0;
@@ -121,7 +117,6 @@ void OlimpicGame::competition_stage(string competition) {
 		cout << "В следующий раз введите предлагаемую букву!" << endl;
 		exit(1);
 	}
-
 
 	switch (c) {
 	case 'y': {

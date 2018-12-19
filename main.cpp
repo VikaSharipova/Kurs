@@ -38,12 +38,7 @@ MList<Sportsman> * get_sportsmans() {
 }
 
 int main() {
-
 	setlocale(LC_ALL, "Russian");
-
-	cout << "Неужели ты работаешь!" << endl;
-
-	system("CLS");
 
 	MList<Sportsman> * participants = get_sportsmans();
 	MList<Discipline> * disciplines = prepare_disciplines();
