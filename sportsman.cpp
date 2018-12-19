@@ -1,82 +1,5 @@
 #include "sportsman.h"
 
-void create_sportsman() {
-	ofstream writeToFile;
-	writeToFile.open(SPORTSMANS_FILE, ios::app);
-
-	int retries = 0;
-
-	string name;
-	string country;
-	int strength = 0;
-	int agility = 0;
-	int luck = 0;
-	int stamina = 0;
-
-	cout << "Создайте карточку спортсмена. Введите имя, страну принадлежности и четыре параметра." << endl;
-	cout << "ФИО: ";
-	name = input_string_with_retries(MAX_INPUT_RETRIES);
-	cout << endl;
-
-	cout << "Список стран участниц: " << endl;
-	for (int i = 0; i < 5; i++) {
-		cout << COUNTRIES[i] << endl;
-	}
-	cout << "Введите страну принадлежности" << endl;
-	bool countryInTheList = false;
-	while (retries <= MAX_INPUT_RETRIES)
-	{
-		country = input_string_with_retries(MAX_INPUT_RETRIES);
-		for (int i = 0; i < 5; i++) {
-			if (country == COUNTRIES[i]) {
-				countryInTheList = true;
-			}
-		}
-
-		if (countryInTheList) {
-			break;
-		}
-		else {
-			countryInTheList = false;
-			cout << "Введённой страны нет в списке стран участниц. Попробуйте снова. Количество попыток: " << MAX_INPUT_RETRIES - retries - 1 << endl;
-			retries++;
-		}
-
-		if (retries == MAX_INPUT_RETRIES) {
-			cout << "Введённой страны нет в списке стран участниц. Попытки исчерпаны. Выключение программы." << endl;
-			exit(1);
-		}
-
-	}
-	retries = 0;
-
-	cout << "Введите параметры спортсмена:" << endl;
-	cout << "Низшая граница: " << LOWEST_SPORTSMAN_PARAMETER << endl << "Высшая граница: " << MAX_SPORTSMAN_PARAMETER << endl;
-
-	cout << "Сила: ";
-	strength = input_int_with_retries(MAX_INPUT_RETRIES);
-	check_sportsmans_parameter(strength);
-
-	cout << "Ловкость: ";
-	agility = input_int_with_retries(MAX_INPUT_RETRIES);
-	check_sportsmans_parameter(agility);
-
-	cout << "Удача: ";
-	luck = input_int_with_retries(MAX_INPUT_RETRIES);
-	check_sportsmans_parameter(luck);
-
-	cout << "Выносливость: ";
-	stamina = input_int_with_retries(MAX_INPUT_RETRIES);
-	check_sportsmans_parameter(stamina);
-
-	writeToFile << name << " " << country << " " << strength << " " << agility << " " << luck << " " << stamina << endl;
-	writeToFile.close();
-
-	system("CLS");
-	cout << "Спортсмен допущен к участию!" << endl;
-}
-
-
 Sportsman::Sportsman(string name,
 	string country,
 	int strength,
@@ -109,7 +32,6 @@ Sportsman& Sportsman::operator= (Sportsman other) {
 
 	return *this;
 }
-
 
 void Sportsman::set_entry(string name,
 	string country,

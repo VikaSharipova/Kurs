@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
 #include "utilities.h"
 #include "constants.h"
 #include "sportsman.h"
@@ -42,7 +41,7 @@ int main() {
 
 	setlocale(LC_ALL, "Russian");
 
-	cout << "Привет, мир!" << endl;
+	cout << "Неужели ты работаешь!" << endl;
 
 	system("CLS");
 

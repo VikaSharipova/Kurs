@@ -5,3 +5,38 @@ France : 14
 Finland : 6
 Japan : 12
 
+Biatlon
+Russia : 15
+Canada : 150
+France : 105
+Finland : 45
+Japan : 90
+
+Skeleton
+Russia : 2
+Canada : 20
+France : 14
+Finland : 6
+Japan : 12
+
+Biatlon
+Russia : 15
+Canada : 150
+France : 105
+Finland : 45
+Japan : 90
+
+Biatlon
+Russia : 15
+Canada : 150
+France : 105
+Finland : 45
+Japan : 90
+
+Skating
+Russia : 18
+Canada : 180
+France : 126
+Finland : 54
+Japan : 108
+

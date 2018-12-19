@@ -7,7 +7,6 @@
 using namespace std;
 
 class Discipline {
-
 public:
 	Discipline(string name,
 		int str,
@@ -32,7 +31,6 @@ public:
 
 	MList<int> compete(MList<Sportsman> sportsmans);
 	MList<int> get_results();
-
 
 private:
 	string name = "";

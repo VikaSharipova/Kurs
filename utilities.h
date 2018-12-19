@@ -19,9 +19,7 @@ void check_sportsmans_parameter(int parameter);
 
 template <typename T>
 class MList {
-
 public:
-
 	MList(Node<T> * newHead);	
 	MList();								
 	MList(const MList<T>& copyFrom);		
@@ -41,7 +39,6 @@ public:
 	T operator[] (unsigned int pos);
 
 private:
-
 	Node<T> * head = 0;
 	unsigned int length = 0;
 

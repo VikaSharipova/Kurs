@@ -7,8 +7,6 @@
 
 using namespace std;
 
-void create_sportsman();
-
 class Sportsman {
 public:
 	Sportsman(string name,

@@ -1,11 +1,9 @@
 #pragma once
-
 #include <string>
 
 using namespace std;
 
 const string SPORTSMANS_FILE = "sportsmans.txt";
-
 const string RESULTS_FILE = "results.txt";
 const string COUNTRIES[5] = {
 	"Russia",
