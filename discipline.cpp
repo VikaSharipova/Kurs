@@ -1,44 +1,19 @@
 #include "discipline.h"
 
-Discipline::Discipline(string name,
-	int str,
-	int agi,
-	int luc,
-	int sta) : name(name), strengthModifier(str), agilityModifier(agi), luckModifier(luc), staminaModifier(sta) {}
+// pair of basic constructors, no more needed
+Discipline::Discipline(	string name,
+						int str,
+						int agi,
+						int luc,
+						int sta) : name(name), strengthModifier(str), agilityModifier(agi), luckModifier(luc), staminaModifier(sta) {}
 
-Discipline::Discipline() {}
-
-Discipline::Discipline(const Discipline& copyFrom) {
-	this->winner = copyFrom.winner;
-	this->name = copyFrom.name;
-	this->agilityModifier = copyFrom.agilityModifier;
-	this->strengthModifier = copyFrom.strengthModifier;
-	this->luckModifier = copyFrom.luckModifier;
-	this->staminaModifier = copyFrom.staminaModifier;
-	this->lastResults = copyFrom.lastResults;
-}
-
-Discipline& Discipline::operator= (Discipline other) {
-	if (this == &other) {
-		return *this;
-	}
-
-	this->winner = other.winner;
-	this->name = other.name;
-	this->agilityModifier = other.agilityModifier;
-	this->strengthModifier = other.strengthModifier;
-	this->luckModifier = other.luckModifier;
-	this->staminaModifier = other.staminaModifier;
-	this->lastResults = other.lastResults;
-
-	return *this;
-}
+Discipline::Discipline(){}
 
 // To set rules or change them
-void Discipline::set_rules(int str,
-	int agi,
-	int luc,
-	int sta)
+void Discipline::set_rules(	int str,
+							int agi,
+							int luc,
+							int sta) 
 {
 	this->strengthModifier = str;
 	this->agilityModifier = agi;
@@ -48,9 +23,9 @@ void Discipline::set_rules(int str,
 
 void Discipline::set_rules(const int* rules) {
 	this->set_rules(rules[0],
-		rules[1],
-		rules[2],
-		rules[3]);
+					rules[1],
+					rules[2],
+					rules[3]);
 }
 
 void Discipline::set_name(string name) {
@@ -61,19 +36,19 @@ MList<int> Discipline::get_results() {
 	return this->lastResults;
 }
 
-string Discipline::get_name() {
+string Discipline::get_name(){
 	return this->name;
 }
 
-Sportsman Discipline::get_winner() {
-	return this->winner;
+Sportsman Discipline::get_victor(){
+	return this->victor;
 }
 
-MList<int> Discipline::compete(MList<Sportsman> participants) {
+void Discipline::compete(MList<Sportsman>& participants) {
 
-	for (int i = 0; i < participants.get_length(); i++) {
-		Sportsman currentParticipant = participants[i];
-		Node<int> * newNode = new Node<int>;
+	for (int i = 0; i < participants.get_length(); ++i) {
+		auto currentParticipant = participants[i];
+		auto newNode = new Node<int>;
 		newNode->value = strengthModifier*currentParticipant.get_strength() + agilityModifier*currentParticipant.get_agility()
 			+ luckModifier*currentParticipant.get_luck() + staminaModifier*currentParticipant.get_stamina();
 		this->lastResults.push_back(newNode);
@@ -81,13 +56,20 @@ MList<int> Discipline::compete(MList<Sportsman> participants) {
 
 	int victorId = 0;
 	int maxResults = 0;
-	for (int i = 0; i < participants.get_length(); i++) {
+	for (int i = 0; i < participants.get_length(); ++i) {
 		if (this->lastResults[i] > maxResults) {
 			maxResults = this->lastResults[i];
 			victorId = i;
 		}
 	}
 
-	this->winner = participants[victorId];
-	return this->lastResults;
+	this->victor = participants[victorId];
+	
+	observerList->updateResult(this->lastResults, this->name);
+}
+
+void Discipline::attach(Observer &obs) {
+	
+	observerList = &obs;
+	cout << "fuck eah" << endl;
 }
